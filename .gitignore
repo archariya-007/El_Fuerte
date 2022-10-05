@@ -1,8 +1,11 @@
 *.log
 *.exe
 
-src/bin
-src/obj
+.vs
+
+bin
+obj
+Properties
 
 test/bin
 test/obj
