@@ -11,10 +11,10 @@ public class FunctionTest
     {
 
         // Invoke the lambda function and confirm the string was upper cased.
-        var function = new Function();
+        var function = new SimpleHelloFunction();
         var context = new TestLambdaContext();
-        var upperCase = function.FunctionHandler("hello world", context);
+        var upperCase = function.ConvertToUpperHandler("hello HULK", context);
 
-        Assert.Equal("HELLO WORLD", upperCase);
+        Assert.Equal("HELLO HULK", upperCase);
     }
 }
