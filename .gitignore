@@ -1,5 +1,8 @@
 *.log
 *.exe
+*.hcl
+*.backup
+*.tfstate
 
 .vs
 
@@ -9,3 +12,5 @@ Properties
 
 test/bin
 test/obj
+
+
