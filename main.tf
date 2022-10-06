@@ -66,16 +66,16 @@ resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
   policy_arn = aws_iam_policy.iam_for_policy_for_lambda.arn
 }
 
-data "archive_file" "zip_simpleHello_dotnet" {
-  type        = "zip"
-  source_dir  = "${path.module}/SimpleHello/src/SimpleHello"
-  output_path = "${path.module}/SimpleHello/simple-hello.zip"
-}
+# data "archive_file" "zip_simpleHello_dotnet" {
+#   type        = "zip"
+#   source_dir  = "${path.module}/SimpleHello/src/SimpleHello"
+#   output_path = "${path.module}/SimpleHello/src/SimpleHello/bin/Release/net6.0/SimpleHello.zip"
+# }
 
 resource "aws_lambda_function" "test_lambda" {
-  filename      = "${path.module}/SimpleHello/simple-hello.zip"
+  filename      = "${path.module}/SimpleHello/src/SimpleHello/bin/Release/net6.0/SimpleHello.zip"
   function_name = "SimpleHelloFunction"
-  handler       = "SimpleHelloFunction.ConvertToUpperHandler"
+  handler       = "SimpleHello::SimpleHello.SimpleHelloFunction::ConvertToUpperHandler"
   runtime       = "dotnet6"
   role          = aws_iam_role.lambda_role.arn
 
